@@ -1,0 +1,503 @@
+############## T0
+
+A2[a=a, b=(a>a), c=a]
+A1[a=a, b=(a>a)]
+A1[a=a, b=a]
+MP[0, 1]
+MP[3, 2]
+
+next_theorem # T1
+
+HYP
+A1[a=(-(-a)), b=(-a)]
+MP[1, 0]
+A3[a=a, b=(-a)]
+MP[3, 2]
+T0[a=(-a)][]
+MN[5]
+MP[4, 6]
+DT[7]
+
+next_theorem # T2
+
+A5[a=a, b=(-a)]
+T0[a=(-a)][]
+MP[0, 1]
+
+next_theorem # T3
+
+A3[a=(-(-a)), b=a]
+T1[a=(-a)][]
+MP[0, 1]
+A1[a=a, b=(-(-(-a)))]
+HYP
+MP[3, 4]
+MP[2, 5]
+DT[6]
+
+next_theorem # T4
+
+A3[a=a, b=b]
+HYP
+MP[0, 1]
+A1[a=b, b=(-a)]
+HYP
+MP[3, 4]
+MP[2, 5]
+DT[6]
+DT[7]
+
+next_theorem # T5
+
+HYP
+HYP
+A2[a=a, b=b, c=c]
+A1[a=(b>c), b=a]
+MP[3, 1]
+MP[2, 4]
+MP[5, 0]
+
+next_theorem # T6
+
+T4[a=(-(a&(-a))), b=(a>(-(-a)))][]
+T1[a=(a&(-a))][]
+A6[a=a, b=(-a)]
+T5[a=(-(-(a&(-a)))), b=(a&(-a)), c=(-(a>(-(-a))))][1, 2]
+MP[0, 3]
+T3[a=a][]
+MP[4, 5]
+
+next_theorem # T7
+
+A4[a=a, b=b]
+HYP
+MP[0, 1]
+T3[a=b][]
+T5[a=(-a), b=b, c=(-(-b))][2, 3]
+T4[a=a, b=(-b)][]
+MP[5, 4]
+A5[a=b, b=a]
+MP[7, 6]
+DT[8]
+
+next_theorem # T8
+
+A1[a=a, b=(-b)]
+HYP
+MP[0, 1]
+A5[a=b, b=a]
+MP[3, 2]
+DT[4]
+
+next_theorem # T9
+
+T8[a=a, b=b][]
+T7[a=b, b=a][]
+T5[a=a, b=(b|a), c=(a|b)][0, 1]
+
+next_theorem # T10
+
+T1[a=a][]
+A2[a=(-(-a)), b=a, c=(-b)]
+A1[a=(a>(-b)), b=(-(-a))]
+HYP
+MP[2, 3]
+MP[1, 4]
+MP[5, 0]
+T4[a=(-a), b=b][]
+MP[7, 6]
+DT[8]
+
+next_theorem # T11
+
+A6[a=a, b=b]
+T10[a=b, b=a][]
+T3[a=(a>(-b))][]
+T5[a=(b>(-a)), b=(a>(-b)), c=(-(-(a>(-b))))][1, 2]
+T10[a=(b>(-a)), b=(-(a>(-b)))][]
+MP[4, 3]
+A7[a=b, b=a]
+T5[a=(-(a>(-b))), b=(-(b>(-a))), c=(b&a)][5, 6]
+T5[a=(a&b), b=(-(a>(-b))), c=(b&a)][0, 7]
+
+next_theorem # T12
+
+A1[a=(-b), b=a]
+T3[a=(a>(-b))][]
+T5[a=(-b), b=(a>(-b)), c=(-(-(a>(-b))))][0, 1]
+T4[a=b, b=(-(a>(-b)))][]
+MP[3, 2]
+A6[a=a, b=b]
+T5[a=(a&b), b=(-(a>(-b))), c=b][5, 4]
+
+next_theorem # T13
+
+T11[a=a, b=b][]
+T12[a=b, b=a][]
+T5[a=(a&b), b=(b&a), c=a][0, 1]
+
+next_theorem # T14
+
+T0[a=(a>(-b))][]
+A1[a=a, b=(a>(-b))]
+HYP
+MP[1, 2]
+A2[a=(a>(-b)), b=a, c=(-b)]
+MP[4, 0]
+MP[5, 3]
+T10[a=(a>(-b)), b=b][]
+MP[7, 6]
+HYP
+MP[8, 9]
+A7[a=a, b=b]
+MP[11, 10]
+
+next_theorem # T15
+
+T13[a=(a&b), b=c][]
+T12[a=(a&b), b=c][]
+HYP
+MP[0, 2]
+MP[1, 2]
+T13[a=a, b=b][]
+T12[a=a, b=b][]
+MP[5, 3]
+MP[6, 3]
+T14[a=b, b=c][8, 4]
+T14[a=a, b=(b&c)][7, 9]
+DT[10]
+
+next_theorem # T16
+
+T12[a=a, b=(b&c)][]
+T13[a=a, b=(b&c)][]
+HYP
+MP[0, 2]
+MP[1, 2]
+T13[a=b, b=c][]
+T12[a=b, b=c][]
+MP[5, 3]
+MP[6, 3]
+T14[a=a, b=b][4, 7]
+T14[a=(a&b), b=c][9, 8]
+DT[10]
+
+next_theorem # T17
+
+T4[a=(-a), b=(-b)][]
+T1[a=a][]
+HYP
+T3[a=b][]
+T5[a=(-(-a)), b=a, c=b][1, 2]
+T5[a=(-(-a)), b=b, c=(-(-b))][4, 3]
+MP[0, 5]
+DT[6]
+
+next_theorem # T18
+
+T1[a=a][]
+HYP
+T5[a=(-(-a)), b=a, c=(-b)][0, 1]
+DT[2]
+T1[a=(a>(-b))][]
+T5[a=(-(-(a>(-b)))), b=(a>(-b)), c=((-(-a))>(-b))][4, 3]
+T17[a=(-(a>(-b))), b=(a&b)][]
+A7[a=a, b=b]
+MP[6, 7]
+T5[a=(-(a&b)), b=(-(-(a>(-b)))), c=((-(-a))>(-b))][8, 5]
+A5[a=(-a), b=(-b)]
+T5[a=(-(a&b)), b=((-(-a))>(-b)), c=((-a)|(-b))][9, 10]
+
+next_theorem # T19
+
+A5[a=a, b=b]
+T17[a=((-a)>b), b=(a|b)][]
+MP[1, 0]
+A1[a=((-(-b))>b), b=(-a)]
+T1[a=b][]
+MP[3, 4]
+A2[a=(-a), b=(-(-b)), c=b]
+MP[6, 5]
+T17[a=((-a)>(-(-b))), b=((-a)>b)][]
+MP[8, 7]
+A7[a=(-a), b=(-b)]
+T5[a=(-((-a)>b)), b=(-((-a)>(-(-b)))), c=((-a)&(-b))][9, 10]
+T5[a=(-(a|b)), b=(-((-a)>b)), c=((-a)&(-b))][2, 11]
+
+next_theorem # T20
+
+A4[a=a, b=b]
+HYP
+MP[0, 1]
+HYP
+T5[a=(-a), b=b, c=c][2, 3]
+HYP
+T17[a=a, b=c][]
+MP[6, 5]
+T17[a=(-a), b=c][]
+MP[8, 4]
+T1[a=a][]
+T5[a=(-c), b=(-(-a)), c=a][9, 10]
+A3[a=c, b=a]
+MP[12, 7]
+MP[13, 11]
+
+next_theorem # T21
+
+HYP
+T3[a=b][]
+T5[a=(-a), b=b, c=(-(-b))][0, 1]
+DT[2]
+MN[3]
+A6[a=(-a), b=(-b)]
+HYP
+MP[5, 6]
+T17[a=((-a)>b), b=((-a)>(-(-b)))][]
+MP[8, 4]
+MP[9, 7]
+A4[a=a, b=b]
+T17[a=(a|b), b=((-a)>b)][]
+MP[12, 11]
+MP[13, 10]
+DT[14]
+
+next_theorem # T22
+
+HYP
+T13[a=a, b=b][]
+T12[a=a, b=b][]
+T17[a=(a&b), b=a][]
+T17[a=(a&b), b=b][]
+MP[3, 1]
+MP[4, 2]
+T20[a=(-a), b=(-b), c=(-(a&b))][0, 5, 6]
+DT[7]
+
+next_theorem # T23
+
+T19[a=a, b=b][]
+HYP
+MP[0, 1]
+T13[a=(-a), b=(-b)][]
+T12[a=(-a), b=(-b)][]
+MP[3, 2]
+MP[4, 2]
+HYP
+MP[7, 5]
+A4[a=b, b=c]
+MP[9, 8]
+MP[10, 6]
+DT[11]
+DT[12]
+A4[a=a, b=(b|c)]
+A5[a=(a|b), b=c]
+T5[a=(a|(b|c)), b=((-a)>(b|c)), c=((-(a|b))>c)][14, 13]
+T5[a=(a|(b|c)), b=((-(a|b))>c), c=((a|b)|c)][16, 15]
+
+next_theorem # T24
+
+T7[a=(a|b), b=c][]
+T23[a=c, b=a, c=b][]
+T7[a=(c|a), b=b][]
+T23[a=b, b=c, c=a][]
+T7[a=(b|c), b=a][]
+HYP
+MP[0, 5]
+MP[1, 6]
+MP[2, 7]
+MP[3, 8]
+MP[4, 9]
+DT[10]
+
+next_theorem # T25
+
+A4[a=a, b=(b&c)]
+HYP
+MP[0, 1]
+T13[a=b, b=c][]
+T12[a=b, b=c][]
+T5[a=(-a), b=(b&c), c=b][2, 3]
+T5[a=(-a), b=(b&c), c=c][2, 4]
+A5[a=a, b=b]
+A5[a=a, b=c]
+MP[7, 5]
+MP[8, 6]
+T14[a=(a|b), b=(a|c)][9, 10]
+DT[11]
+
+next_theorem # T26
+
+HYP
+T13[a=a, b=(b|c)][]
+T12[a=a, b=(b|c)][]
+MP[1, 0]
+MP[2, 0]
+A4[a=b, b=c]
+MP[5, 4]
+T1[a=(a>(-b))][]
+HYP
+MP[7, 8]
+MP[9, 3]
+MP[6, 10]
+T14[a=a, b=c][3, 11]
+DT[12]
+DT[13]
+MN[14]
+HYP
+MP[15, 16]
+A7[a=a, b=b]
+T17[a=(-(a>(-b))), b=(a&b)][]
+MP[19, 18]
+T5[a=(-(a&b)), b=(-(-(a>(-b)))), c=(a&c)][20, 17]
+A5[a=(a&b), b=(a&c)]
+MP[22, 21]
+DT[23]
+
+next_theorem # T27
+
+T13[a=(a|b), b=(a|c)][]
+T12[a=(a|b), b=(a|c)][]
+HYP
+MP[0, 2]
+MP[1, 2]
+A4[a=a, b=b]
+A4[a=a, b=c]
+MP[5, 3]
+MP[6, 4]
+HYP
+MP[7, 9]
+MP[8, 9]
+T14[a=b, b=c][10, 11]
+DT[12]
+A5[a=a, b=(b&c)]
+MP[14, 13]
+DT[15]
+
+next_theorem # T28
+
+A4[a=(a&b), b=(a&c)]
+HYP
+MP[0, 1]
+T2[a=(a&b)][]
+T13[a=a, b=b][]
+T13[a=a, b=c][]
+T5[a=(-(a&b)), b=(a&c), c=a][2, 5]
+T20[a=(a&b), b=(-(a&b)), c=a][3, 4, 6]
+T12[a=a, b=b][]
+T9[a=b, b=c][]
+T5[a=(a&b), b=b, c=(b|c)][8, 9]
+T12[a=a, b=c][]
+T8[a=c, b=b][]
+T5[a=(a&c), b=c, c=(b|c)][11, 12]
+T5[a=(-(a&b)), b=(a&c), c=(b|c)][2, 13]
+T20[a=(a&b), b=(-(a&b)), c=(b|c)][3, 10, 14]
+T14[a=a, b=(b|c)][7, 15]
+DT[16]
+
+next_theorem # T29
+
+HYP
+HYP
+T14[a=(a>b), b=(b>a)][0, 1]
+A9[a=a, b=b]
+MP[3, 2]
+
+next_theorem # T30
+
+T3[a=a][]
+T1[a=a][]
+T29[a=a, b=(-(-a))][0, 1]
+
+next_theorem # T31
+
+T17[a=a, b=b][]
+T4[a=b, b=a][]
+T29[a=(a>b), b=((-b)>(-a))][0, 1]
+
+next_theorem # T32
+
+T7[a=a, b=b][]
+T7[a=b, b=a][]
+T29[a=(a|b), b=(b|a)][0, 1]
+
+next_theorem # T33
+
+T11[a=a, b=b][]
+T11[a=b, b=a][]
+T29[a=(a&b), b=(b&a)][0, 1]
+
+next_theorem # T34
+
+T15[a=a, b=b, c=c][]
+T16[a=a, b=b, c=c][]
+T29[a=((a&b)&c), b=(a&(b&c))][0, 1]
+
+next_theorem # T35
+
+T24[a=a, b=b, c=c][]
+T23[a=a, b=b, c=c][]
+T29[a=((a|b)|c), b=(a|(b|c))][0, 1]
+
+next_theorem # T36
+
+T18[a=a, b=b][]
+T22[a=a, b=b][]
+T29[a=(-(a&b)), b=((-a)|(-b))][0, 1]
+
+next_theorem # T37
+
+T19[a=a, b=b][]
+T21[a=a, b=b][]
+T29[a=(-(a|b)), b=((-a)&(-b))][0, 1]
+
+next_theorem # T38
+
+T25[a=a, b=b, c=c][]
+T27[a=a, b=b, c=c][]
+T29[a=(a|(b&c)), b=((a|b)&(a|c))][0, 1]
+
+next_theorem # T38
+
+T26[a=a, b=b, c=c][]
+T28[a=a, b=b, c=c][]
+T29[a=(a&(b|c)), b=((a&b)|(a&c))][0, 1]
+
+next_theorem # T40
+
+A8[a=a, b=b]
+T11[a=(a>b), b=(b>a)][]
+A9[a=b, b=a]
+A8[a=b, b=a]
+T11[a=(b>a), b=(a>b)][]
+A9[a=a, b=b]
+T5[a=(a~b), b=((a>b)&(b>a)), c=((b>a)&(a>b))][0, 1]
+T5[a=(a~b), b=((b>a)&(a>b)), c=(b~a)][6, 2]
+T5[a=(b~a), b=((b>a)&(a>b)), c=((a>b)&(b>a))][3, 4]
+T5[a=(b~a), b=((a>b)&(b>a)), c=(a~b)][8, 5]
+T14[a=((a~b)>(b~a)), b=((b~a)>(a~b))][7, 9]
+A9[a=(a~b), b=(b~a)]
+MP[11, 10]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

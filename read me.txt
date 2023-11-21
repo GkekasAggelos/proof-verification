@@ -1,0 +1,213 @@
+This program takes a list of formal proofs in propositional calculus
+and checks if they are correct. The folder of the program should
+contain the files:
+
+(1) formulas.txt
+(2) explanations.txt
+(3) theorems.txt
+(4) formal proof check.py
+(5) read me.txt
+
+The inputs to the program are the files formulas.txt, explanations.txt
+and theorems.txt. formulas.txt contains the proofs, explanations.txt
+contains explanations for eachstep of the proofs and theorems.txt
+contains the last formula of each proof.
+
+##########################################################################
+                               Syntax
+
+Single line comments can be written in all three input files using the
+character #. Whitespace and empty lines are ignored.
+
+##########################################################################
+                           In formulas.txt
+
+The different proofs are seperated by the keyword next_theorem in the
+beginning of a new line. All lines of a proof must have the form:
+
+{h0, h1, ... hN}_f
+
+where hi and f are all well formed formulas. The symbol _ is interpreted
+as ⊢. The formulas must have all parentheses and can have the connectives:
+
+(1) - for negation (¬)
+(2) > for imlication (→)
+(3) | for disjunction (∨)
+(4) & for conjunction (∧)
+(5) ~ for equivalence (↔)
+
+All propositional variables must be single letter characters.
+
+Examples:
+
+{(a>b), (b>c)}_(a>c) means {a→b, b→c} ⊢ a→c
+{}_(-(a&(-a))) means ⊢ ¬(a∧¬a)
+{}_(((-a)>(-b))>(b>a)) means ⊢ (¬a→¬b)→(b→a)
+
+
+##########################################################################
+                        In explanations.txt
+
+The different proofs are also seperated by the keyword next_theorem in
+the beginning of a new line. All lines must have one of the following
+forms:
+
+(1) Aj[p1=f1, ... pN=fN] where j is a digit 1-9, pi are propositional
+    variables of axiom Aj and fj are well formed formulas
+(2) HYP
+(3) MP[n0, n1] where ni are integers
+(4) Tj[p1=f1, ... pN=fN][no, ... nM] where j is an integer, pi are
+    propositional variables of theorem Tj, fj are well formed formulas
+    and ni are integers
+(5) MN[n0] where n0 is an integer
+(6) DT[n0] where n0 is an integer
+
+For each theorem the number of lines in explanations.txt and
+formulas.txt must be the same. Each line of explanations.txt explains
+a line in formulas.txt.
+
+Case 1 (Axioms):
+
+The axioms are:
+
+A1: (a→(b→a))
+A2: ((a→(b→c))→((a→b)→(a→c)))
+A3: (((¬a)→(¬b))→(((¬a)→b)→a))
+A4: ((a∨b)→((¬a)→b))
+A5: (((¬a)→b)→(a∨b))
+A6: ((a∧b)→(¬(a→(¬b))))
+A7: ((¬(a→(¬b)))→(a∧b))
+A8: ((a↔b)→((a→b)∧(b→a)))
+A9: (((a→b)∧(b→a))→(a↔b))
+
+The explanation Aj[p1=f1, ... pN=fN] means that the corresponding
+formula is of the form {h0, ... hN}_f where f is identical to Aj with
+each pi replaced by fi.
+
+Examples:
+
+A1[a=(-a), b=a] explains {}_((-a)>(a>(-a)))
+A4[a=(a>b), b=b] explains {(a>b), a}_(((a>b)|b)>((-(a>b))>b))
+
+Case 2 (Hypotheses):
+
+The explanation HYP means that the corresponding formula is of the
+form {h0, ... hN}_hi where i is an integer between 0 and N.
+
+Examples:
+
+HYP explains {a, b}_a
+HYP explains {(a>b), (b>c)}_(b>c)
+
+Case 3 (Modus Ponens):
+
+The explanation MP[n0, n1] means that the corresponding formula
+is of the form {h0, ... hN}_f1 and the formulas with indices n0
+and n1 in the same proof are of the form {h0, ... hN}_(f0>f1) and
+{h0, ... hN}_f0 respectively. The indices n0, n1 must be smaller than
+the index of the formula explained by MP[n0, n1]. Note that all
+three formulas must have exactly the same hi in the beginning.
+
+Examples:
+
+{}_((a>((a>a)>a))>((a>(a>a))>(a>a)))   # index 0
+{}_(a>((a>a)>a))                       # index 1
+{}_(a>(a>a))                           # index 2
+{}_((a>(a>a))>(a>a))                   # index 3
+{}_(a>a)                               # index 4
+
+MP[0, 1] explains {}_((a>(a>a))>(a>a))
+MP[3, 2] explains {}_(a>a)
+
+{(-(-a))}_(((-a)>(-a))>a)              # index 0
+{(-(-a))}_((-a)>(-a))                  # index 1
+{(-(-a))}_a                            # index 2
+
+MP[0, 1] explains {(-(-a))}_a
+
+Case 4 (Theorems):
+
+The explanation Tj[p1=f1, ... pN=fN][no, ... nM] means that the
+corresponding formula is of the form {h1', ... hK'}_f' where the
+j-th line of theorems.txt is {h0, ... hM}_f and f' is the same
+as f when pi are changed by fi and each nk-th formula of the proof
+is the same as hk when pi are changed by fi. All nk must be
+smaller than the index of the current line of the proof and j must
+be smaller than the index of the current proof. Also, all nk-th
+formulas of the proof must be of the form {h1', ... hK'}_fk.
+
+Examples:
+
+{}_(a>a)                               # T0
+{(a>b), (b>c)}_(a>c)                   # T5
+
+# part of proof 1
+
+{}_((-a)>(-a))                         # index 5
+
+T0[a=(-a)][] explains {}_((-a)>(-a))
+
+# part of proof 6
+
+{}_((-(-(a&(-a))))>(a&(-a)))           # index 1
+{}_((a&(-a))>(-(a>(-(-a)))))           # index 2
+{}_((-(-(a&(-a))))>(-(a>(-(-a)))))     # index 3
+
+T5[a=(-(-(a&(-a)))), b=(a&(-a)), c=(-(a>(-(-a))))][1, 2] explains
+{}_((-(-(a&(-a))))>(-(a>(-(-a)))))
+
+Case 5 (Monotonicity):
+
+The explanation MN[n0] explains the formula {h0, ... hN}_f where the
+n0-th formula of the same proof is {h0', ... hM'}_f and {h0, ... hN}
+is a subset of {h0', ... hM'}. n0 must be smaller than the index of
+the current formula of the proof.
+
+Examples:
+
+{}_((-a)>(-a))                         # index 5
+{(-(-a))}_((-a)>(-a))                  # index 6
+
+MN[5] explains {(-(-a))}_((-a)>(-a))
+
+{a}_(b>a)                              # index 3
+{a, b}_(b>a)                           # index 4
+
+MN[3] explains {a, b}_(b>a)
+
+Case 6 (Deduction Theorem):
+
+The explanation DT[n0] explains the formula {h0, ... hN}_(h'>f) where
+the n0-th formula of the same proof is {h0', ... hM'}_f, {h0, ... hN}
+is {h0', ... hM'}-{h'} and h' is an element of {h0', ... hM'}. n0
+must be smaller than the index of the current formula of the proof.
+
+Examples:
+
+{(-(-a))}_a                            # index 7
+{}_((-(-a))>a)                         # index 8
+
+DT[7] explains {}_((-(-a))>a)
+
+{((-a)>(-b))}_(b>a)                    # index 7
+{}_(((-a)>(-b))>(b>a))                 # index 8
+
+DT[7] explains {}_((-(-a))>a)
+
+##########################################################################
+                          In theorems.txt
+
+All the last lines of the proofs in formulas.txt are the lines of
+theorems.txt. 
+
+##########################################################################
+
+When formal proof check.py runs a message will be printed for each proof
+until an error is found or the proofs end. In the first case an error
+message with the type and location of the error will be prited. Otherwise
+you will be informed that all the proofs are correct.
+
+##########################################################################
+
+Please report any bugs at gkekasaa@ece.auth.gr
+Thank you and enjoy your proof checking!!!
