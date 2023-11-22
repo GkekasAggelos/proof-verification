@@ -134,12 +134,15 @@ as f when pi are changed by fi and each nk-th formula of the proof
 is the same as hk when pi are changed by fi. All nk must be
 smaller than the index of the current line of the proof and j must
 be smaller than the index of the current proof. Also, all nk-th
-formulas of the proof must be of the form {h1', ... hK'}_fk.
+formulas of the proof must be of the form {h1', ... hK'}_fk (They
+must have the same formulas inside the brackets { } as the current
+line of the proof).
 
 Examples:
 
 {}_(a>a)                               # T0
 {(a>b), (b>c)}_(a>c)                   # T5
+{a, b}_(a&b)                           # T7
 
 # part of proof 1
 
@@ -155,6 +158,14 @@ T0[a=(-a)][] explains {}_((-a)>(-a))
 
 T5[a=(-(-(a&(-a)))), b=(a&(-a)), c=(-(a>(-(-a))))][1, 2] explains
 {}_((-(-(a&(-a))))>(-(a>(-(-a)))))
+
+# part of proof 9
+
+{(a|c), b}_(a>b)                       # index 8
+{(a|c), b}_(b>b)                       # index 9
+{(a|c), b}_((a>b)&(b>b))               # index 10
+
+T7[a=(a>b), b=(b>b)][8, 9] explains {(a|c), b}_((a>b)&(b>b))
 
 Case 5 (Monotonicity):
 
@@ -209,5 +220,6 @@ you will be informed that all the proofs are correct.
 
 ##########################################################################
 
-Please report any bugs at gkekasaa@ece.auth.gr
+If you find any bugs or inaccuracies please report them at
+gkekasaa@ece.auth.gr or gkekasaggelos2002@gmail.com.
 Thank you and enjoy your proof checking!!!
