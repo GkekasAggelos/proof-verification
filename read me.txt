@@ -6,12 +6,15 @@ contain the files:
 (2) explanations.txt
 (3) theorems.txt
 (4) formal proof check.py
-(5) read me.txt
 
 The inputs to the program are the files formulas.txt, explanations.txt
 and theorems.txt. formulas.txt contains the proofs, explanations.txt
-contains explanations for eachstep of the proofs and theorems.txt
+contains explanations for each step of the proofs and theorems.txt
 contains the last formula of each proof.
+
+Alternatively, you can run the file formal proof check with inputs.py
+without having the txt files, as it has the contents of these files
+saved in strings.
 
 ##########################################################################
                                Syntax
